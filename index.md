@@ -8,6 +8,15 @@ If you search for this feature: here's the solution (and many more). Typescript 
 in the future and there are many features in the pipeline that will enhance the way you
 work with typescript.
 
+[![Travis build](https://img.shields.io/travis/buehler/typescript-hero.svg)](https://travis-ci.org/buehler/typescript-hero)
+[![Marketplace](https://vsmarketplacebadge.apphb.com/version-short/rbbit.typescript-hero.svg)](https://marketplace.visualstudio.com/items?itemName=rbbit.typescript-hero)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs/rbbit.typescript-hero.svg)](https://marketplace.visualstudio.com/items?itemName=rbbit.typescript-hero)
+[![GitHub issues](https://img.shields.io/github/issues/buehler/typescript-hero.svg)](https://github.com/buehler/typescript-hero/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/buehler/typescript-hero.svg)](https://github.com/buehler/typescript-hero/pulls)
+[![Semantic release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Greenkeeper](https://badges.greenkeeper.io/buehler/typescript-hero.svg)](https://greenkeeper.io/)
+[![License](https://img.shields.io/github/license/buehler/typescript-hero.svg)](https://github.com/buehler/typescript-hero/blob/master/LICENSE)
+
 ## Features at a glance
 
 Here is a brief list, of what TypeScript Hero is capable of (more at the end):
@@ -18,15 +27,7 @@ Here is a brief list, of what TypeScript Hero is capable of (more at the end):
 - Intellisense that suggests symbols and automatically adds the needed imports
 - "Light bulb feature" that fixes code you wrote
 - Sort and organize your imports (sort and remove unused)
-
-##### Some badges :-)
-
-[![Travis](https://img.shields.io/travis/buehler/typescript-hero.svg)](https://travis-ci.org/buehler/typescript-hero)
-[![Marketplace](http://vsmarketplacebadge.apphb.com/version-short/rbbit.typescript-hero.svg)](https://marketplace.visualstudio.com/items?itemName=rbbit.typescript-hero)
-[![Installs](http://vsmarketplacebadge.apphb.com/installs/rbbit.typescript-hero.svg)](https://marketplace.visualstudio.com/items?itemName=rbbit.typescript-hero)
-[![GitHub issues](https://img.shields.io/github/issues/buehler/typescript-hero.svg)](https://github.com/buehler/typescript-hero/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/buehler/typescript-hero.svg)](https://github.com/buehler/typescript-hero/pulls)
-[![license](https://img.shields.io/github/license/buehler/typescript-hero.svg)](https://github.com/buehler/typescript-hero)
+- Code outline view of your open TS / TSX document
 
 ## Commands
 
@@ -81,6 +82,16 @@ The following settings do have the prefix `resolver`. So an example setting coul
 | multiLineTrailingComma                | When multiline imports are created, `true` inserts a trailing comma to the last line |
 | disableImportSorting                  | Disable sorting during organize imports action                                       |
 | importGroups                          | The groups that are used for sorting the imports (description below)                 |
+| ignoreImportsForOrganize              | Imports that are never removed during organize import (e.g. react)                   |
+
+### Code outline view
+
+The following settings do have the prefix `codeOutline`. So an example setting could be
+`typescriptHero.codeOutline.enabled`.
+
+| Setting   | Description                                                                |
+| --------- | -------------------------------------------------------------------------- |
+| enabled   | Defines if the view should actually parse the opened documents             |
 
 ## Features (extended)
 
@@ -192,6 +203,15 @@ TypeScript Hero offers the following fix actions:
 - Detect a missing import and offer to add all missing imports to the file
 - Detect missing methods / properties of an interface that you implemented and implement them for you (implement interface refactoring)
 - Detect missing abstract methods of an extended abstract class and implement them for you (implement abstract class refactoring)
+
+### Code outline view
+
+This view is below your file explorer. It displays a code outline of your actually opened typescript or typescript-react
+file. If you switch your actual editor, the new file is parsed and shown. When you expand classes and imports, you'll
+see what's in them. If you click on an element, the editor will jump to the location of the element.
+
+By now, only typescript / typescript-react is supported. Maybe this will wander in it's own extension to support
+more languages than those two.
 
 ## Known Issues
 
