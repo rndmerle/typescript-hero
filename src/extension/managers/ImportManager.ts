@@ -92,6 +92,12 @@ export class ImportManager implements ObjectManager {
      * @memberof ImportManager
      */
     public static async create(document: TextDocument): Promise<ImportManager> {
+        let text = document.getText();
+        if (document.languageId === "vue") {
+            const sfc = text.match(/([\s\S]*<script.*?>\n)([\s\S]*?)<\/script>/i);
+            if( sfc )
+                text = sfc[1].replace(/./g, " ") + sfc[2];
+        }
         const source = await ImportManager.parser.parseSource(document.getText());
         source.imports = source.imports.map(
             o => o instanceof NamedImport || o instanceof DefaultImport ? new ImportProxy(o) : o,

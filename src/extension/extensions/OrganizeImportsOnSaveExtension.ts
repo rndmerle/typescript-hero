@@ -21,6 +21,7 @@ export class OrganizeImportsOnSaveExtension extends BaseExtension {
         'typescriptreact',
         'javascript',
         'javascriptreact',
+        'vue'
     ];
     private logger: Logger;
 

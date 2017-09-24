@@ -298,11 +298,13 @@ class VscodeResolverConfig implements ResolverConfig {
         if (mode === ResolverMode.TypeScript || mode === ResolverMode.Both) {
             languages.push('typescript');
             languages.push('typescriptreact');
+            languages.push('vue');
         }
 
         if (mode === ResolverMode.ES6 || mode === ResolverMode.Both) {
             languages.push('javascript');
             languages.push('javascriptreact');
+            languages.push('vue');
         }
 
         return languages;

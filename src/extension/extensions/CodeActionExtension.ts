@@ -21,9 +21,9 @@ import { BaseExtension } from './BaseExtension';
 
 /**
  * Provider instance that is responsible for the "light bulb" feature.
- * It provides actions to take when errors occur in the current document (such as missing imports or 
+ * It provides actions to take when errors occur in the current document (such as missing imports or
  * non implemented interfaces.).
- * 
+ *
  * @export
  * @class CodeActionExtension
  * @implements {CodeActionProvider}
@@ -44,7 +44,7 @@ export class CodeActionExtension extends BaseExtension implements CodeActionProv
 
     /**
      * Initialized the extension. Registers the commands and other disposables to the context.
-     * 
+     *
      * @memberof ImportResolveExtension
      */
     public initialize(): void {
@@ -54,13 +54,14 @@ export class CodeActionExtension extends BaseExtension implements CodeActionProv
         ));
         this.context.subscriptions.push(languages.registerCodeActionsProvider('typescript', this));
         this.context.subscriptions.push(languages.registerCodeActionsProvider('typescriptreact', this));
+        this.context.subscriptions.push(languages.registerCodeActionsProvider('vue', this));
 
         this.logger.info('Initialized');
     }
 
     /**
      * Disposes the extension.
-     * 
+     *
      * @memberof ImportResolveExtension
      */
     public dispose(): void {
@@ -69,13 +70,13 @@ export class CodeActionExtension extends BaseExtension implements CodeActionProv
 
     /**
      * Provides the commands to execute for a given problem.
-     * 
+     *
      * @param {TextDocument} document
      * @param {Range} range
      * @param {CodeActionContext} context
      * @param {CancellationToken} token
      * @returns {Promise<Command[]>}
-     * 
+     *
      * @memberof CodeActionExtension
      */
     public async provideCodeActions(
@@ -102,11 +103,11 @@ export class CodeActionExtension extends BaseExtension implements CodeActionProv
 
     /**
      * Executes a code action. If the result is false, a warning is shown.
-     * 
+     *
      * @private
      * @param {CodeAction} codeAction
      * @returns {Promise<void>}
-     * 
+     *
      * @memberof CodeFixExtension
      */
     private async executeCodeAction(codeAction: CodeAction | undefined): Promise<void> {

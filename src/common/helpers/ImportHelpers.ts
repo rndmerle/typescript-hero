@@ -13,6 +13,12 @@ export function getImportInsertPosition(editor: TextEditor | undefined): Positio
         return new Position(0, 0);
     }
     const lines = editor.document.getText().split('\n');
-    const index = lines.findIndex(line => !line.match(/^\s*(\/\/|\/\*\*|\*\/|\*|['"]use strict['"])/g));
+    let index = 0;
+    if (editor.document.languageId === "vue") {
+        const script: number = lines.findIndex(line => (line.match(/^\s*<script.*?>/) as any as boolean));
+        index = script + 1;
+    } else {
+        index = lines.findIndex(line => !line.match(/^\s*(\/\/|\/\*\*|\*\/|\*|['"]use strict['"])/g));
+    }
     return new Position(Math.max(0, index), 0);
 }
